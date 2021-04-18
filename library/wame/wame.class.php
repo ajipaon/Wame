@@ -7,7 +7,7 @@ use FluentPDO;
 defined('BASEPATH') OR exit('No direct script access allowed');
 class wame_db
 {
-	private $max_file_id = 9;
+	private $max_file_id = 5;
 	public $CURRENT_DATE;
 	public $DATETIME;
 	private $pdo;
@@ -31,66 +31,7 @@ class wame_db
 | GET Function wame
 |--------------------------------------------------------------------------
 */
-/////////////---------insert----------/////////
-   public function insert_Domain($data) {
-   	//fungsi ini menambahkan daftar domain baru ke database
-		$query = $this->db
-				 ->insertInto('list_domains')
-				 ->values($data)->execute();
-		return true;//Self::get_file($data['id']);
-	}
-	   public function insert_Whois_Domain($data) {
-	 //fungsi ini menambahkan data create, update dari whois domain
-		$query = $this->db
-				 ->insertInto('whois_domains')
-				 ->values($data)->execute();
-		return true;//Self::get_file($data['id']);
-	}
 
-/////////////---------END insert----------/////////
-/////////////---------get----------/////////
-	 public function getDomainList() {
-	 // funsi ini mengenbalikan daftar fomain yang belum di cek whois
-   $query = $this->pdo->query("SELECT name_domain FROM list_domains WHERE cek_whois = '0'");
-		$datas = $query->fetchAll();
-		return $datas;
-   }
-
-   	public function get_count_admin_domain($tbl) {
-   	//fungsi ini menghitung jumlah domain yang belum di whois
-		$query = $this->db
-				 ->from($tbl)
-				 ->where('cek_whois', 0)
-				 ->execute();
-		return $query->rowCount();
-	}
-	public function get_Domain_List_sudah_Cek_whois() {
-		$query = $this->db
-				 ->from('whois_domains')
-				 ->execute();
-		//$datas['count'] = $query->rowCount();
-		$datas = $query->fetchAll();
-		return $datas;
-}
-
-/////////////---------END get----------/////////
-
-/////////////--------- start update----------/////////
-
-	public function update_domainList($domain, $value) {
-		$query = $this->db
-				->update('list_domains')
-				->set('cek_whois',$value)
-				->where('name_domain', $domain);
-		return $query->execute();
-	}
-
-/////////////---------END update----------/////////
-/*
-|--------------------------------------------------------------------------
-| END Function wame
-|--------------------------------------------------------------------------
-*/
 
 /*
 |--------------------------------------------------------------------------
