@@ -1,3 +1,7 @@
+<?php include('templates/header.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

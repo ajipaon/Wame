@@ -19,7 +19,7 @@ define('CURRENT_URL', BASE_HOST.$_SERVER['REQUEST_URI']);
 |--------------------------------------------------------------------------
 */
 $dbinfo['host']     = 'localhost'; 		// your mysql server
-$dbinfo['db']       = 'domain'; // your database name
+$dbinfo['db']       = 'wame'; // your database name
 $dbinfo['user']     = 'root'; 			// your username for mysql
 $dbinfo['password'] = '';				// your password for mysql
 
