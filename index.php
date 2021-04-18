@@ -3,10 +3,21 @@
 
 if(isset($_POST['title'])){
 
-	echo $_POST['title'];
-	echo $_POST['number_phone'];
-	echo $_POST['message'];
-	var_dump($wame->generateID());
+	// echo $_POST['title'];
+	 $number = $_POST['number_phone'];
+	
+	// var_dump($wame->generateID());
+	$data = array(
+
+		'id'        => $wame->generateID(),
+		'title'     =>  $_POST['title'],
+		'nomor_tlp' =>   $number,
+		'pesan'     =>  $_POST['message'],
+		'web'       =>  $_POST['url'],
+		'descripsi'      =>  $_POST['desc']
+	);
+	$hasil = $wame->insertPage($data);
+	var_dump($data);
 }
 
 
@@ -22,10 +33,11 @@ if(isset($_POST['title'])){
 </head>
 <body>
 	<form action="" method="post">
-		
+	  <input type="text" name="url" placeholder="Masukkan url">
       <input type="text" name="title" placeholder="Masukkan title">
       <input type="text" name="number_phone" placeholder="masukkan nomor telpon">
       <input type="text" name="message" placeholder="masukkan pesan">
+      <input type="text" name="desc" placeholder="masukkan description">
       <button type="submit">Create</button>
 
 

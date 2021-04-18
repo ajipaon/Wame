@@ -1,0 +1,11 @@
+#http to https
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+RewriteRule ^([a-zA-Z0-9]+)$ pageView.php?id=$1 [L]
+RewriteRule ^([a-zA-Z0-9]+)/$ pageView.php?id=$1 [L]
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9-_]+)$ pageView.php?id=$1 [L]
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9-_]+)/$ pageView.php?id=$1 [L]
