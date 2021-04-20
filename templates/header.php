@@ -6,3 +6,5 @@
 //   $broken_badge = ($broken_count >= 1) ? 'badge-danger' : 'badge-secondary';
 //    $msa = $BoxClass->getUser($_user['email']);
 // }
+?>
+

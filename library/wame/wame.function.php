@@ -17,35 +17,31 @@ function changeTitle($title,$description='', $img=''){
 }
 
 
+function hash_pass($pass){
 
+	 $a = password_hash($pass, PASSWORD_DEFAULT);
+	 return $a;
+}
 
-function generate_tokenFileID() {
+function generate_UserID() {
 	$res = '';
 	$pattrn = '0123456789abcdefghijklmnopqrstuvwxzy';
-	for ($i=0; $i <=150; $i++) { 
+	for ($i=0; $i <=10; $i++) { 
 		$res .= $pattrn[mt_rand(0, strlen($pattrn) - 1)];
 	} return $res;
 }
-function get_token_file() {
-	return generate_csrf_token('file_token');
+function bikinSession($id, $name){
+  $expired_session = time() + 3600 * 24 * 10; 
+  $sa = array(
+  	'id' => $id,
+  	'name' => $name
+  );
+ return setcookie("user", json_encode($sa), $expired_session, '/', BASE_DOMAIN, TRUE, TRUE);
+
 }
-function generate_csrf_token($session='csrf_token', $len=32) {
-	$token = base64_encode(openssl_random_pseudo_bytes($len));
-   	$token = sha1($token);
-	if(empty($_SESSION[$session])) $_SESSION[$session] = $token;
-	return $_SESSION[$session];
-}
-function getShort($url) {
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, base_url("api/googl?url=$url"));
-	//curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/plain'));
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-	curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-	$res = curl_exec($ch);
-	curl_close($ch);
-	return $res;
-}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function htmlcode($url, $text) {
 	return htmlspecialchars('<a href="'.$url.'">'.$text.'</a>');
 }

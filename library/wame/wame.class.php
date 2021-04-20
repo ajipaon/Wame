@@ -28,7 +28,7 @@ class wame_db
 
 	/*
 |--------------------------------------------------------------------------
-| UPDATE Function wame
+| INSERT Function wame
 |--------------------------------------------------------------------------
 */
 public function insertPage($data) {
@@ -38,10 +38,15 @@ public function insertPage($data) {
 		return Self::getPage($data['id']);
 	}
 
-
+public function registerUser($data) {
+		$query = $this->db
+				 ->insertInto('tb_users')
+				 ->values($data)->execute();
+		return Self::getUser($data['user_id']);
+	}
 /*
 |--------------------------------------------------------------------------
-| UPDATE Function
+| END INSERT Function
 |--------------------------------------------------------------------------
 */
 	
@@ -56,12 +61,65 @@ public function getPage($email) {
 				->where('id', $email)
 				->execute();
 		return $query->fetch();
+}
+public function getUser($id) {
+		$query = $this->db
+				->from('tb_users')
+				->where('user_id', $id)
+				->execute();
+		return $query->fetch();
+}
+public function cekLoginUser($id) {
+		$query = $this->db
+				->from('tb_users')
+				->where('user_name', $id['user_name'])
+				->execute();
+		$row= $query->rowCount();
+		$user = $query->fetchAll();
+	if($row == 0){
+		return false;
+	}else{
+	if (password_verify($id['user_pas'],$user[0]['user_pass'])
+			) {
+		return $user[0]['user_id'];
+		}
+		return false;
+		
 	}
+}
+
+
 /*
 |--------------------------------------------------------------------------
-| GET Function
+| END GET Function
 |--------------------------------------------------------------------------
 */
+/*
+|--------------------------------------------------------------------------
+| OTHER Function
+|--------------------------------------------------------------------------
+*/
+public function cekUserNameTerdafter($id) {
+		$query = $this->db
+				->from('tb_users')
+				->where('user_name', $id)
+				->execute();
+		return $query->rowCount();
+	}
+	public function cekUserEmailTerdafter($id) {
+		$query = $this->db
+				->from('tb_users')
+				->where('user_email', $id)
+				->execute();
+		return $query->rowCount();
+	}
+
+/*
+|--------------------------------------------------------------------------
+| END OTHER Function
+|--------------------------------------------------------------------------
+*/
+
 	public function insert_file($data) {
 		$query = $this->db
 				 ->insertInto('tb_file')
@@ -88,13 +146,6 @@ public function getPage($email) {
 				->insertInto('tb_user')
 				->values($data);
 		return $query->execute();
-	}
-	public function getUser($email) {
-		$query = $this->db
-				->from('tb_user')
-				->where('email', $email)
-				->execute();
-		return $query->fetch();
 	}
 		public function getMail_file($fileid) {
 		$query = $this->db

@@ -14,7 +14,7 @@ if(isset($_POST['title'])){
 		'nomor_tlp' =>   $number,
 		'pesan'     =>  $_POST['message'],
 		'web'       =>  $_POST['url'],
-		'descripsi'      =>  $_POST['desc']
+		'descripsi' =>  $_POST['desc']
 	);
 	$hasil = $wame->insertPage($data);
 	var_dump($data);
@@ -24,25 +24,20 @@ if(isset($_POST['title'])){
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Welcome - this is whatsapp link </title>
-</head>
-<body>
+<div class="container" stye="border:green;">
+  ...fdbhdfgbdfrgdf
+</div>
+
+<!--  <main role="main" class="container">
+ 	<div class="starter-template">
 	<form action="" method="post">
-	  <input type="text" name="url" placeholder="Masukkan url">
-      <input type="text" name="title" placeholder="Masukkan title">
-      <input type="text" name="number_phone" placeholder="masukkan nomor telpon">
-      <input type="text" name="message" placeholder="masukkan pesan">
-      <input type="text" name="desc" placeholder="masukkan description">
+	  <input type="text" name="url" placeholder="Masukkan url"><br>
+      <input type="text" name="title" placeholder="Masukkan title"><br>
+      <input type="text" name="number_phone" placeholder="masukkan nomor telpon"><br>
+      <input type="text" name="message" placeholder="masukkan pesan"><br>
+      <input type="text" name="desc" placeholder="masukkan description"><br>
       <button type="submit">Create</button>
-
-
 	</form>
-
-
-</body>
-</html>
+	</div>
+  </main> -->
+<?php include('templates/footer.php'); ?>
