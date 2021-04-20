@@ -40,4 +40,3 @@ if(isset($_POST['title'])){
 	</form>
 	</div>
   </main> -->
-<?php include('templates/footer.php'); ?>
