@@ -4,13 +4,14 @@
 if (is_login()) {
  $user = json_decode($_COOKIE['user']);
 
- var_dump($user);
-echo $user->2['id'];
-	echo "anda login";
-	# code...
+ 
 } else {
-	echo "anda tidak login";
-}
+	 header("Location:".base_url("/Wame"));
+}?>
 
 
- ?>
+
+
+
+<?php
+include('templates/footer.php');

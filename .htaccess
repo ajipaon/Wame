@@ -9,3 +9,6 @@ RewriteRule ^([a-zA-Z0-9]+)$ pageView.php?id=$1 [L]
 RewriteRule ^([a-zA-Z0-9]+)/$ pageView.php?id=$1 [L]
 RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9-_]+)$ pageView.php?id=$1 [L]
 RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9-_]+)/$ pageView.php?id=$1 [L]
+
+RewriteRule ^login$ login.php [L]
+RewriteRule ^login/$ login.php [L]

@@ -48,14 +48,14 @@ $name = !empty($_POST['username'])? trim($_POST['username']) : null;
             <div class="main-border col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
                 <h3 class="card-title text-left mb-3 huruf-black">Login</h3>
-                <form>
+                <form action="" method="POST">
                   <div class="form-group huruf-black ">
                     <label>Username or email *</label>
-                    <input type="text" class="main-form" placeholder="Username">
+                    <input type="text" class="main-form" name="username" placeholder="Username" value="<?= $name ?>">
                   </div>
                   <div class="form-group huruf-black">
                     <label>Password *</label>
-                    <input type="password" class="main-form" placeholder="Password">
+                    <input type="password" class="main-form" name="pass" placeholder="Password">
                   </div>
                   <div class="form-group d-flex align-items-center justify-content-between">
                     <div class="form-check">
@@ -65,7 +65,7 @@ $name = !empty($_POST['username'])? trim($_POST['username']) : null;
                     <a href="#" class="forgot-pass">Forgot password</a>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-dark btn-block enter-btn">Login</button>
+                    <button type="submit" class="btn btn-dark btn-block enter-btn" name="submit">Login</button>
                   </div>
                   <p class="sign-up huruf-black">Don't have an Account?<a href="#"> Sign Up</a></p>
                 </form>
